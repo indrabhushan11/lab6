@@ -81,12 +81,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private boolean hasContactsPermission() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
-                ==
-                PackageManager.PERMISSION_GRANTED;
+                == PackageManager.PERMISSION_GRANTED;
     }
     private boolean hasSendSMSPermission() {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) ==
-                PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED;
     }
     @SuppressLint({"SuspiciousIndentation", "Range"})
     @Override
@@ -94,11 +92,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != Activity.RESULT_OK) return;
         Uri contactUri = data.getData();
-        Cursor cursor = this.getContentResolver().query(contactUri,
-                new String[]{"display_name","data1"},
-                null,
-                null,
-                null);
+        Cursor cursor = this.getContentResolver().query(contactUri,new String[]{"display_name","data1"},null,null,null);
         try {
             if (cursor.getCount() == 0) return;
             cursor.moveToFirst();
