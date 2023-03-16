@@ -31,21 +31,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent pickcontact = new Intent(
-                Intent.ACTION_PICK,
-                ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+        Intent pickcontact = new Intent(Intent.ACTION_PICK,ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
         Toast t = new Toast(this);
+        
         na = findViewById(R.id.name);
         num = findViewById(R.id.Number);
         message = findViewById(R.id.message);
         ib = findViewById(R.id.ib);
         send_sms = findViewById(R.id.Send_sms);
+        
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(pickcontact, 1);
             }
         });
+        
+        
         requestContactsPermission();
         send_sms.setOnClickListener(new View.OnClickListener() {
             @Override
